@@ -27,7 +27,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(PUBLIC).permitAll()
                 .antMatchers(HttpMethod.GET,"/cities", "/events").permitAll()
-                .antMatchers(HttpMethod.POST, ALLOWED_IF_CLIENT).hasRole("CLIENT")
+                .antMatchers(HttpMethod.POST, ALLOWED_IF_CLIENT).hasAnyRole("ADMIN","CLIENT")
                 .anyRequest().hasRole("ADMIN");
 
     }
